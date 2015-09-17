@@ -1,9 +1,13 @@
+About Author
+==============================
+Auther of this application is Vishnu Awasthi, I am a pationate java program and like to write application samples on java technologies.
+
+For any query mail me  : vishnuawasthi121@gmail.com 
+
 ShopNow Application starting steps
 ==============================
 
 Basic Spring MVC 4.0.x application using `WebApplicationInitializer` instead of `web.xml`.
-
-Check out [kielczewski.eu/blog](http://kielczewski.eu/blog)!
 
 Requirements
 ------------
