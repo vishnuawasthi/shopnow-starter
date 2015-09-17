@@ -13,4 +13,4 @@ Requirements
 Quick start
 -----------
 1. `mvn jetty:run`
-2. Point your browser to [http://localhost:8090/shownow](http://localhost:8090/shownow)
+2. Point your browser to [http://localhost:8090/shopnow](http://localhost:8090/shownow)
