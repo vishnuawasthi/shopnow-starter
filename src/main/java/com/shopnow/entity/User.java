@@ -1,35 +1,59 @@
 package com.shopnow.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+@NamedQueries({
+	@NamedQuery(name="User.loadUserByName",query="FROM User user WHERE user.username =:username")
+})
 
 @Entity
 @Table(name = "jpa_user")
 public class User implements Serializable {
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 8182426570010869L;
 	@Id
 	@Column(name = "user_id")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
 	@Column(name = "first_name")
 	private String firstName;
+	
 	@Column(name = "last_name")
 	private String lastName;
+	
 	@Column(name = "user_name", nullable = false, unique = true)
 	private String username;
+	
 	@Column(name = "password", nullable = false)
 	private String password;
+	
 	@Column(name = "email")
 	private String email;
+	
+	@OneToMany(mappedBy="user",cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private Set <Roles> userRoles = new HashSet<Roles>();
+	
+	public Set<Roles> getUserRoles() {
+		return this.userRoles;
+	}
+
+	public void setUserRoles(Set<Roles> userRoles) {
+		this.userRoles = userRoles;
+	}
 
 	public Long getId() {
 		return this.id;
@@ -79,87 +103,7 @@ public class User implements Serializable {
 		this.email = email;
 	}
 
-	public User() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 
-	public User(Long id, String firstName, String lastName, String username,
-			String password, String email) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.username = username;
-		this.password = password;
-		this.email = email;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((this.email == null) ? 0 : this.email.hashCode());
-		result = prime * result
-				+ ((this.firstName == null) ? 0 : this.firstName.hashCode());
-		result = prime * result + ((this.id == null) ? 0 : this.id.hashCode());
-		result = prime * result
-				+ ((this.lastName == null) ? 0 : this.lastName.hashCode());
-		result = prime * result
-				+ ((this.password == null) ? 0 : this.password.hashCode());
-		result = prime * result
-				+ ((this.username == null) ? 0 : this.username.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		User other = (User) obj;
-		if (this.email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!this.email.equals(other.email))
-			return false;
-		if (this.firstName == null) {
-			if (other.firstName != null)
-				return false;
-		} else if (!this.firstName.equals(other.firstName))
-			return false;
-		if (this.id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!this.id.equals(other.id))
-			return false;
-		if (this.lastName == null) {
-			if (other.lastName != null)
-				return false;
-		} else if (!this.lastName.equals(other.lastName))
-			return false;
-		if (this.password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!this.password.equals(other.password))
-			return false;
-		if (this.username == null) {
-			if (other.username != null)
-				return false;
-		} else if (!this.username.equals(other.username))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "User [id=" + this.id + ", firstName=" + this.firstName
-				+ ", lastName=" + this.lastName + ", username=" + this.username
-				+ ", password=" + this.password + ", email=" + this.email + "]";
-	}
-
+	
 }

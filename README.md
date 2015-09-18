@@ -1,6 +1,6 @@
 About Author
 ==============================
-Auther of this application is Vishnu Awasthi, I am a pationate java program and like to write application samples on java technologies.
+Auther of this application is Vishnu Awasthi, I am a pationate java programmer and like to write application samples on java technologies.
 
 For any query mail me  : vishnuawasthi121@gmail.com 
 

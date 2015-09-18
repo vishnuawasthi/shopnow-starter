@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import com.shopnow.dao.LoginDAO;
+import com.shopnow.dao.LoginRepository;
 import com.shopnow.entity.User;
 import com.shopnow.exception.RecordNotFoundException;
 import com.shopnow.form.UserForm;
@@ -18,13 +18,16 @@ public interface LoginService {
 	public abstract void deleteById(Long id);
 	public abstract UserForm findById(Long id);
 	public abstract UserForm findByName(String userName);
+	public abstract User loadUserByName(String userName);
+	
+	
 
 	@Service
 	@Transactional
 	public class Impl implements LoginService {
 
 		@Autowired
-		private LoginDAO loginRepository;
+		private LoginRepository loginRepository;
 
 		public void create(UserForm userForm) {
 			loginRepository.save(formToEntity(userForm));
@@ -90,6 +93,11 @@ public interface LoginService {
 				userForm.setEmail(user.getEmail());
 			}
 			return userForm;
+		}
+
+		@Override
+		public User loadUserByName(String userName) {
+			return loginRepository.loadUserByName(userName);
 		}
 
 	}

@@ -25,6 +25,7 @@ import com.shopnow.resource.ProductResource;
  *
  */
 @RestController
+@RequestMapping(value="/rest")
 public class ProductController {
 
 	@Autowired
@@ -32,6 +33,9 @@ public class ProductController {
 	
 	@RequestMapping(value = "/getProducts",method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public  HttpEntity<List<ProductResource>> getProducts() {
+		
+		
+		
 		return new ResponseEntity<List<ProductResource>>(  assembler.toResources( getProductList())    ,HttpStatus.OK);
 				
 	}
