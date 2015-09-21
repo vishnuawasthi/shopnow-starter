@@ -32,34 +32,35 @@ public class SecurityConfiguration  extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 	   	auth.userDetailsService(userDetailsService);
-		//auth.authenticationProvider(authenticationProvider);
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		/*http
-			.csrf().disable()
-			.authorizeRequests()
-			//.antMatchers("/**", "/**")
-			.anyRequest()
-			.access("hasRole('USER')")
-			.and()
-			.formLogin()
-			.failureUrl("/login?error")
-			.usernameParameter("username").passwordParameter("password")
-			.and().authenticationProvider(authenticationProvider);
-	*/
 		
+	/*
 		http
 		.csrf().disable()
-		//.authorizeRequests().antMatchers("GET","/rest/getProducts")
-		.authorizeRequests().antMatchers("/rest/getProducts")
-		//.access("hasRole('USER')")
-		.authenticated().and().formLogin();	
-		//.failureUrl("/login?error")
-		//.usernameParameter("username").passwordParameter("password").and().logout().logoutSuccessUrl("/login?logout");/*.and()
-		//.exceptionHandling().accessDeniedPage("/403").and().csrf();*/
+		.authorizeRequests().antMatchers("/home").access("hasRole('USER')")
+		.and()
+		.formLogin().usernameParameter("username").passwordParameter("password").loginPage("/login")
+		.failureUrl("/login?error")
+	    .and()
+	    .logout().logoutSuccessUrl("/login?logout")
+	    .and()
+	    .exceptionHandling().accessDeniedPage("/403");*/
 		
-		
+	http
+		.csrf().disable()
+		.authorizeRequests().antMatchers("/home").authenticated()
+		.and()
+		.formLogin().usernameParameter("username").passwordParameter("password").loginPage("/login")
+		.failureUrl("/login?error")
+	    .and()
+	    .logout().logoutSuccessUrl("/login?logout")
+	    .and()
+	    .exceptionHandling().accessDeniedPage("/403");
+	
+	
+	
 	}
 }

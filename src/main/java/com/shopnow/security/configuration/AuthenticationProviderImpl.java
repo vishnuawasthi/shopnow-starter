@@ -42,6 +42,7 @@ public class AuthenticationProviderImpl implements AuthenticationProvider {
 				System.out.println(" user.getAuthorities()           ::::::::"+ user.getAuthorities());
 				
 				final Authentication auth = new UsernamePasswordAuthenticationToken(principal, password, user.getAuthorities());
+				
 				return auth;
 		} else {
 				return null;

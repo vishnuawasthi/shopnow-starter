@@ -20,7 +20,7 @@ public class ApplicationInitializer implements WebApplicationInitializer {
 	
 	private static final String CONFIG_LOCATION = "com.shopnow.configuration";
 	
-	private static final String MAPPING_URL = "/*";
+	private static final String MAPPING_URL = "/";
 	
 	public void onStartup(ServletContext servletContext)throws ServletException {
 		
@@ -33,7 +33,7 @@ public class ApplicationInitializer implements WebApplicationInitializer {
 		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("dispatcherServlet", new DispatcherServlet(context));
 												 dispatcher.setLoadOnStartup(1);
 												 dispatcher.addMapping(MAPPING_URL);
-														
+												 
 	}
 	
 }

@@ -26,7 +26,7 @@ import com.shopnow.security.configuration.SecurityConfiguration;
 
 @EnableWebMvc
 @Configuration
-@Import(value ={SecurityConfiguration.class, JPAConfiguration.class})
+@Import(value ={SecurityConfiguration.class, JPAConfiguration.class,EmailConfiguration.class})
 @PropertySource(
 		value = {		"classpath:database.properties",
 						"classpath:web.properties"
@@ -41,7 +41,8 @@ import com.shopnow.security.configuration.SecurityConfiguration;
 						"com.shopnow.entity",
 						"com.shopnow.assembler",
 						"com.shopnow.security.configuration",
-						"com.shopnow.security.service"
+						"com.shopnow.security.service",
+						"com.shopnow.utils"
 		})
 public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 
@@ -79,6 +80,7 @@ public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 													viewResolver.setPrefix("/WEB-INF/jsp/");
 													viewResolver.setSuffix(".jsp");
 													viewResolver.setViewClass(JstlView.class);
+													viewResolver.setContentType("text/html");
 													return viewResolver;
 	}
 
