@@ -3,7 +3,6 @@ package com.shopnow.configuration;
 import java.util.Properties;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 
 public class EmailConfiguration {
