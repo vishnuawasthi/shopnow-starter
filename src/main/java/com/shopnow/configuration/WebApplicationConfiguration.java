@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
@@ -23,7 +24,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 import com.shopnow.filter.RequestInterceptor;
 import com.shopnow.security.configuration.SecurityConfiguration;
-
+@EnableSpringDataWebSupport 
 @EnableWebMvc
 @Configuration
 @Import(value ={SecurityConfiguration.class, JPAConfiguration.class,EmailConfiguration.class})

@@ -12,7 +12,13 @@ public class RequestInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-
+		    response.setHeader("Access-Control-Allow-Origin", "*");
+		    response.setHeader("Access-Control-Allow-Methods", "POST, GET,PUT, OPTIONS, DELETE");
+		    response.setHeader("Access-Control-Max-Age", "3600");
+		    response.setHeader("Access-Control-Allow-Credentials", "true");
+		   // httpServletResponse.setHeader("Access-Control-Allow-Headers", API_KEY + "," + AUTHORIZATION + ",content-type,x-requested-with");
+		
+		
 	}
 
 	@Override

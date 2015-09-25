@@ -47,7 +47,7 @@ public class LoginController {
 		
 		
 		emailService.sendEmail("vishnu.awasthi@valuelabs.com", "TEST-EMAIL", toList, ccList, bccList, "Hello <br/> This is an test email");
-		
+		ModelAndView modelAndView = new ModelAndView();
 		log.info("home() -end ");
 		return new ModelAndView("header",modelMap);
 	}
