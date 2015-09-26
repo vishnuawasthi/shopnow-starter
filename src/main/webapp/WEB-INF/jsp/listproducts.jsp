@@ -18,41 +18,40 @@
 
 </head>
 <body onload="load()">
-<div ng-app="productApp" ng-controller="productController">
-<span ng-bind="name" >
+	<div ng-app="productApp" ng-controller="productController">
+
+		<ul>
+			<li ng-repeat="record in records ">
+				<ul>
+					<li>record.productId</li>
+					<li>record.productName</li>
+					<li>record.price</li>
+					<!--  <li> record.productId </li> -->
+
+				</ul>
+
+			</li>
+
+		</ul>
+		<hr>
+		{{name}}
+	</div>
 
 
-
-</span>
-{{name}}
-</div>
-
-
-<script >
+	<script>
 
 app = angular.module("productApp",[]);
 var productController =  app.controller("productController",function($scope,$http){
-	/* $scope.id ;
-	$scope.name ="Vishnu";
-	$scope.mobile;
-	$scope.email ;
-	$scope.address;
-	$scope.city; */
-	$scope.items = [
-					$scope.id,
-					$scope.name,
-					$scope.mobile,
-					$scope.email,
-					$scope.address,
-					$scope.city
-	                ],
+	$http({method: 'GET', url: 'http://localhost:8090/shopnow/rest/getProducts'})
+			.success(function(data)
+				{
+					$scope.records = data; 
+				});
 	
-	$http.get("http://localhost:8090/shopnow/suppliers/1").success(
-						function(response) {
-							alert(response);
-							$scope.items=response; 
-							});
-};
+});
+
+
+
 </script>
 
 </body>
