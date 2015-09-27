@@ -19,39 +19,29 @@
 </head>
 <body onload="load()">
 	<div ng-app="productApp" ng-controller="productController">
-
 		<ul>
 			<li ng-repeat="record in records ">
 				<ul>
-					<li>record.productId</li>
-					<li>record.productName</li>
-					<li>record.price</li>
-					<!--  <li> record.productId </li> -->
-
+					<li>{{record.productId}}</li>
+					<li>{{record.productName}}</li>
+					<li>{{record.price}}</li>
+					<li ng-repeat="ref in record.links"><a href={{ref.href}}> See </a></li>
 				</ul>
-
 			</li>
-
 		</ul>
 		<hr>
 		{{name}}
 	</div>
-
-
 	<script>
 
 app = angular.module("productApp",[]);
 var productController =  app.controller("productController",function($scope,$http){
-	$http({method: 'GET', url: 'http://localhost:8090/shopnow/rest/getProducts'})
-			.success(function(data)
-				{
-					$scope.records = data; 
-				});
-	
+	$scope.records={};			
+	 $http.get('http://localhost:8090/shopnow/rest/getProducts')
+     .then(function(res){
+        $scope.records = res.data;                
+      });
 });
-
-
-
 </script>
 
 </body>
