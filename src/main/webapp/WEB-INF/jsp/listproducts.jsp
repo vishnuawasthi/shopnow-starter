@@ -17,21 +17,35 @@
 <script src="resources/script/common.js"></script>
 
 </head>
-<body onload="load()">
-	<div ng-app="productApp" ng-controller="productController">
+<body onload="load()" ng-app="productApp">
+
+
+
+	<div ng-controller="productController">
+	<div ng-include="'common.html'"></div>
 		<ul>
-			<li ng-repeat="record in records ">
+			<li ng-repeat="record in records  ">
 				<ul>
-					<li>{{record.productId}}</li>
-					<li>{{record.productName}}</li>
-					<li>{{record.price}}</li>
-					<li ng-repeat="ref in record.links"><a href={{ref.href}}> See </a></li>
+					<li    >{{record.productId  }}</li>
+					<li>{{record.productName  | orderBy:record.productName:false }}</li>
+					<li>{{record.price  | currency : "INR " : 2}}</li>
+					<li ng-repeat="ref in record.links"><a href={{ref.href}}>
+							See </a></li>
 				</ul>
 			</li>
 		</ul>
-		<hr>
+
 		{{name}}
 	</div>
+	<hr>
+	<div ng-controller="sample1Controller">
+		<ul>
+			<li ng-repeat=" x in data ">{{x.id }} &nbsp; {{ x.name}}</li>
+		</ul>
+	</div>
+
+
+
 	<script>
 
 app = angular.module("productApp",[]);
@@ -42,7 +56,22 @@ var productController =  app.controller("productController",function($scope,$htt
         $scope.records = res.data;                
       });
 });
-</script>
 
+
+var sample1Controller =  app.controller("sample1Controller",function($scope){
+	$scope.data = [{
+			name : "Sample -1",
+			id   : "9876"
+	},
+	{
+		name : "Sample -2",
+		id   : "0000"
+}
+	
+	];
+});
+
+</script>
+<div ng-include="'header.jsp'"></div>
 </body>
 </html>
