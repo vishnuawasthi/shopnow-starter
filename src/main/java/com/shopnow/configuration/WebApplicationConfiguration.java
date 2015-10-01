@@ -43,7 +43,8 @@ import com.shopnow.security.configuration.SecurityConfiguration;
 						"com.shopnow.assembler",
 						"com.shopnow.security.configuration",
 						"com.shopnow.security.service",
-						"com.shopnow.utils"
+						"com.shopnow.utils",
+						"com.shopnow.form"
 		})
 public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 

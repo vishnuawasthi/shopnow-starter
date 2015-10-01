@@ -2,16 +2,24 @@ package com.shopnow.form;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class RegistrationForm implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -9089193371228180225L;
-	
+
+	@NotEmpty(message = "First name should not be empty")
 	private String firstName;
+	@NotEmpty(message = "Last name should not be empty")
 	private String lastName;
+	@NotEmpty(message = "Mobile number should not be empty")
+	@Size(min = 10, message = "mobile number should contains at least 10 digits")
 	private String mobile;
+	@NotEmpty(message = "Email should not be empty")
+	@Email(message = "Please enter valid email")
 	private String email;
 	private String city;
 	private String state;
@@ -65,7 +73,5 @@ public class RegistrationForm implements Serializable {
 	public void setTermsAndConditions(Boolean termsAndConditions) {
 		this.termsAndConditions = termsAndConditions;
 	}
-	
-	
 
 }
