@@ -30,27 +30,24 @@
 			</tr>
 			<tr>
 				<td>First Name</td>
-				<td><input type="text" name="firstName" id="firstName"
-					ng-model="firstName" required="required"></td>
+				<td><input type="text" name="firstName" id="firstName" ng-model="firstName" required="required" />
+			    </td>
 				<td>
-					<div
-						ng-show="registrationForm.$submitted || registrationForm.firstName.$touched ">
-						<span ng-show="registrationForm.firstName.$error.required">Please
-							enter first name</span>
-					</div>
+						<span ng-show="firstNameError">{{firstNameError}}</span>
+					
 				</td>
 			</tr>
 			<tr>
 				<td>Last Name</td>
 				<td><input type="text" name="lastName" id="lastName"
 					ng-model="lastName"></td>
-				<td></td>
+				<td><span ng-show="lastNameError ">{{lastNameError }}</span></td>
 			</tr>
 			<tr>
 				<td>Mobile</td>
 				<td><input type="text" name="mobile" id="mobile"
 					ng-model="mobile"></td>
-				<td></td>
+				<td><span ng-show="mobileError">{{mobileError }}</span></td>
 			</tr>
 			<tr>
 				<td>Email</td>
@@ -82,6 +79,9 @@
 				<td>Agree To Terms and Conditions</td>
 				<td colspan="2"><input type="checkbox"
 					name="termsAndConditions" ng-model="termsAndConditions"></td>
+
+				<td><span ng-show=""> Please accept terms and conditions</span>
+				</td>
 
 			</tr>
 
