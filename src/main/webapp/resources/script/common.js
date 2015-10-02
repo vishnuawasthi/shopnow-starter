@@ -1,3 +1,3 @@
 function load(){
-	alert("Common has been loaded");
+	//alert("Common has been loaded");
 }
