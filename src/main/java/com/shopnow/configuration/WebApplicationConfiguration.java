@@ -27,7 +27,13 @@ import com.shopnow.security.configuration.SecurityConfiguration;
 @EnableSpringDataWebSupport 
 @EnableWebMvc
 @Configuration
-@Import(value ={SecurityConfiguration.class, JPAConfiguration.class,EmailConfiguration.class})
+@Import(value ={
+					SecurityConfiguration.class,
+					JPAConfiguration.class,
+					EmailConfiguration.class,
+					/*RabbitMQConfiguration.class,
+					RabbitMQIntegrationConfiguration.class*/
+					})
 @PropertySource(
 		value = {		"classpath:database.properties",
 						"classpath:web.properties"
@@ -44,7 +50,8 @@ import com.shopnow.security.configuration.SecurityConfiguration;
 						"com.shopnow.security.configuration",
 						"com.shopnow.security.service",
 						"com.shopnow.utils",
-						"com.shopnow.form"
+						"com.shopnow.form",
+						"com.shopnow.rabbitmq"
 		})
 public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 

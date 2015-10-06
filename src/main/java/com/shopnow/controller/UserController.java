@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,10 +21,17 @@ public class UserController {
 	
 	private static final Logger log = Logger.getLogger(UserController.class);
 	
+	/*@Autowired
+	private RabbitTemplate rabbitTemplate;*/
+
 	
 	@RequestMapping(value="/registration")
 	public ModelAndView registration(ModelMap modelMap){
 		log.info("registration() - start");
+		
+		//rabbitTemplate.convertAndSend("shopnow-exchange", "shopnow-queue", "Shownow-Test");
+		//shopnow-queue
+		
 		log.info("registration() - end");
 		return new ModelAndView("registration", modelMap);
 	}
@@ -50,8 +56,8 @@ public class UserController {
 		return new ModelAndView("validationView");
 	}
 	
-	@RequestMapping(value="/doValidation",method=RequestMethod.POST)
-	public ModelAndView   doSpringValidation( @Validated @ModelAttribute("registrationForm ")  RegistrationForm registrationForm,
+	@RequestMapping(value="/test",method=RequestMethod.POST)
+	public ModelAndView   doSpringValidation( @Valid @ModelAttribute("registrationForm ")  RegistrationForm registrationForm,
 			BindingResult result,WebRequest webRequest ){
 		System.out.println("doSpringValidation() - start");
 		
