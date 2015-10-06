@@ -23,24 +23,24 @@
 			</tr>
 			<tr>
 				<td>First Name</td>
-				<td><form:input path="firstName" /></td>
-				<td><form:errors path="firstName"></form:errors></td>
+				<td><form:input path="firstName" /> </br>  <form:errors path="firstName" cssClass="error"></form:errors></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td>Last Name</td>
-				<td><form:input path="lastName" /></td>
-				<td><form:errors path="lastName" cssClass="error"></form:errors>
+				<td><form:input path="lastName" /> </br><form:errors path="lastName" cssClass="error"></form:errors></td>
+				<td>
 				</td>
 			</tr>
 			<tr>
 				<td>Mobile</td>
-				<td><form:input path="mobile" /></td>
-				<td><form:errors path="mobile"></form:errors></td>
+				<td><form:input path="mobile" /></br> <form:errors path="mobile" cssClass="error"></form:errors></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td>Email</td>
-				<td><form:input path="email" /></td>
-				<td><form:errors path="email"></form:errors></td>
+				<td><form:input path="email" /></br> <form:errors path="email" cssClass="error"></form:errors></td>
+				<td></td>
 			</tr>
 			<tr>
 				<td></td>
