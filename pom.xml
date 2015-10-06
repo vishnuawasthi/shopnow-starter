@@ -170,6 +170,19 @@
     <version>1.5.2</version>
 </dependency>
 		
+		<!--  RabbitMQ I -->
+	<!-- 	<dependency>
+	<groupId>org.springframework.amqp</groupId>
+	<artifactId>spring-rabbit</artifactId>
+	<version>1.4.5.RELEASE</version>
+</dependency> -->
+<dependency>
+  <groupId>org.springframework.amqp</groupId>
+  <artifactId>spring-rabbit</artifactId>
+  <version>1.5.1.RELEASE</version>
+</dependency>
+		
+		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
