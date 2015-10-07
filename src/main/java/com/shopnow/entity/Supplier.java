@@ -22,6 +22,7 @@ public class Supplier implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column
 	private Long id;
+	@Column(name="name")
 	private String name;
 	private String mobile;
 	private String email;
