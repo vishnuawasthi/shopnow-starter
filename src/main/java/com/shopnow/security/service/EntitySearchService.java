@@ -11,6 +11,7 @@ import com.shopnow.utils.SearchCriteria;
 
 public interface EntitySearchService {
 	public abstract List<?> search(SearchCriteria searchCriteria);
+	
 
 	@Service
 	public class Impl implements EntitySearchService {

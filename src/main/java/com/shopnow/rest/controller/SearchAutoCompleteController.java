@@ -10,6 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopnow.entity.Supplier;
@@ -24,11 +25,13 @@ public class SearchAutoCompleteController {
 	private EntitySearchService entitySearchService;
 
 	@RequestMapping(value = "/rest/autoSearch", method = RequestMethod.GET,produces = MediaType.APPLICATION_JSON_VALUE)
-		
-	public HttpEntity<List<String>> search() {
+	public HttpEntity<List<String>> search(@RequestParam (value="countryName" ,required=false) String countryName) {
 		System.out.println(" search() - start");
+		
+		System.out.println("countryName  ::::: "+countryName);
+		
 		List<String> searchValues = new ArrayList<String>();
-		List<?> supplierList = entitySearchService.search(new SearchCriteria("name", "TST1","Supplier", Supplier.class));
+		List<?> supplierList = entitySearchService.search(new SearchCriteria("name", countryName,"Supplier", Supplier.class));
 
 		for (Object tempObject : ValidationUtils.nullSafe(supplierList)) {
 			Supplier supplier = (Supplier) tempObject;

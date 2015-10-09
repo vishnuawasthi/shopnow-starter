@@ -30,7 +30,7 @@ public  class SearchAutoCompleteRespository{
 	}
 	
 	public List<?> search(){
-		TypedQuery<?> query = entityManager.createQuery(" FROM "+this.entityName+"  entity WHERE "+ "entity."+searchField+ "  =:"+searchField , this.clazz);
+		TypedQuery<?> query = entityManager.createQuery(" FROM "+this.entityName+"  entity WHERE "+ "entity."+searchField+"  =:"+searchField , this.clazz);
 		query.setParameter(searchField, searchFieldValue);
 		return query.getResultList();
 	}

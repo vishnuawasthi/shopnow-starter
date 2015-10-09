@@ -96,7 +96,7 @@
 										.then(function(res) {
 											$scope.texts = res.data;
 										});
-							}
+							};
 						});
 	</script>
 	<div ng-include="WEB-INF/jps/header.jsp"></div>
