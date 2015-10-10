@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.shopnow.assembler.ProductsAssembler;
+import com.shopnow.entity.Supplier;
 import com.shopnow.form.Products;
 import com.shopnow.resource.ProductResource;
+import com.shopnow.security.service.EntitySearchService;
 
 /**
  * @author Vishnu Awasthi
@@ -66,4 +68,5 @@ public class ProductController {
 		return list;
 
 	}
+	
 }

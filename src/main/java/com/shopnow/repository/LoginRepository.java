@@ -13,7 +13,7 @@ import com.shopnow.entity.User;
  *
  */
 @Component
-@Repository(value="loginRepository")
+@Repository(value="LoginRepository")
 public class LoginRepository extends AbstractRepository<User> {
 	public LoginRepository() {
 		setClazz(User.class);

@@ -23,7 +23,7 @@
 </head>
 <body ng-app="userApp" ng-controller="registrationController as regctrl"
 	onload="loadReg()">
-	<form name="registrationForm" novalidate>
+	<form name="registrationForm" >
 		<table>
 			<tr>
 				<td colspan="3" id="resultArea">{{result}}</td>

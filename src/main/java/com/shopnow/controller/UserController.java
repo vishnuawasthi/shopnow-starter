@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,10 +21,17 @@ public class UserController {
 	
 	private static final Logger log = Logger.getLogger(UserController.class);
 	
+	/*@Autowired
+	private RabbitTemplate rabbitTemplate;*/
+
 	
 	@RequestMapping(value="/registration")
 	public ModelAndView registration(ModelMap modelMap){
 		log.info("registration() - start");
+		
+		//rabbitTemplate.convertAndSend("shopnow-exchange", "shopnow-queue", "Shownow-Test");
+		//shopnow-queue
+		
 		log.info("registration() - end");
 		return new ModelAndView("registration", modelMap);
 	}
@@ -47,33 +53,47 @@ public class UserController {
 	@RequestMapping(value="/validation")
 	public ModelAndView springValidation(ModelMap modelMap ){
 		modelMap.put("registrationForm", new RegistrationForm());
-		return new ModelAndView("validationView");
+		return new ModelAndView("test");
 	}
 	
 	@RequestMapping(value="/doValidation",method=RequestMethod.POST)
-	public ModelAndView   doSpringValidation( @Validated @ModelAttribute("registrationForm ")  RegistrationForm registrationForm,
-			BindingResult result,WebRequest webRequest ){
+	public ModelAndView   doValidation( @Valid @ModelAttribute("registrationForm")  RegistrationForm registrationForm,
+			BindingResult result){
 		System.out.println("doSpringValidation() - start");
-		
-		System.out.println("****************************************");
-		System.out.println("registrationForm ::::::" +registrationForm.getFirstName());
-		System.out.println("registrationForm ::::::" +registrationForm.getLastName());
-		System.out.println("-----------------------------------------");
-		
-		for ( ObjectError error  : result.getAllErrors())
-		{
-			System.out.println(error.getDefaultMessage());
-		}
 		ModelAndView modelAndView = new ModelAndView();
 		if(result.hasErrors()){
 			System.out.println("doSpringValidation() - errors");
 			modelAndView.addObject("registrationForm",registrationForm);
-			modelAndView.setViewName("validationView");
+			modelAndView.setViewName("test");
 			return modelAndView;
 		}
 		System.out.println("doSpringValidation() - end");
 		modelAndView.addObject("registrationForm", new RegistrationForm());
 		return  modelAndView;
+	}
+	
+	
+	@RequestMapping(value="/member")
+	public ModelAndView showMember(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.addObject("memberForm", new RegistrationForm() );
+		modelAndView.setViewName("member");
+		return modelAndView;
+	}
+	
+	
+	@RequestMapping(value="/save",method=RequestMethod.POST)
+	public ModelAndView doMember(@Valid  @ModelAttribute("memberForm")RegistrationForm memberForm,BindingResult result ){
+		ModelAndView modelAndView = new ModelAndView();
+		if(result.hasErrors()){
+			System.out.println("Errorsssssssssss::::::::::::");
+			modelAndView.addObject("memberForm",memberForm );
+			modelAndView.setViewName("member");
+			return modelAndView;
+		}
+		modelAndView.addObject("memberForm", new RegistrationForm() );
+		modelAndView.setViewName("member");
+		return modelAndView;
 	}
 	
 	
