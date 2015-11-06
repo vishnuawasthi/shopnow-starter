@@ -52,7 +52,8 @@ import com.shopnow.security.configuration.SecurityConfiguration;
 						"com.shopnow.utils",
 						"com.shopnow.form",
 						"com.shopnow.rabbitmq",
-						"com.shopnow.repository"
+						"com.shopnow.repository",
+						"com.shopnow.rest.support"
 		})
 public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 
