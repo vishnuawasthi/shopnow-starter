@@ -3,10 +3,13 @@
 
 package com.shopnow.dto;
 
+import java.util.Arrays;
+
 public class RestResponse {
 	private java.lang.String[] messages;
+	private ResultElement[] result;
 
- 	public void setMessages(java.lang.String[] messages) {
+	public void setMessages(java.lang.String[] messages) {
 		this.messages = messages;
 	}
 
@@ -14,14 +17,26 @@ public class RestResponse {
 		return messages;
 	}
 
-	private ResultElement[] result;
-
- 	public void setResult(ResultElement[] result) {
+	public void setResult(ResultElement[] result) {
 		this.result = result;
 	}
 
 	public ResultElement[] getResult() {
 		return result;
 	}
+
+	public RestResponse(String[] messages, ResultElement[] result) {
+		super();
+		this.messages = messages;
+		this.result = result;
+	}
+
+	@Override
+	public String toString() {
+		return "RestResponse [messages=" + Arrays.toString(this.messages) + ", result="
+				+ Arrays.toString(this.result) + "]";
+	}
+
+	
 
 }

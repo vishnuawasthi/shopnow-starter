@@ -6,7 +6,7 @@ package com.shopnow.dto;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 public class Test {
-	private RestResponse restresponse;
+	private RestResponse RestResponse;
 
 	@JsonCreator
  	public Test() {
@@ -14,12 +14,13 @@ public class Test {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void setRestresponse(RestResponse restresponse) {
-		this.restresponse = restresponse;
+	public RestResponse getRestResponse() {
+		return this.RestResponse;
 	}
 
-	public RestResponse getRestresponse() {
-		return restresponse;
+	public void setRestResponse(RestResponse restResponse) {
+		this.RestResponse = restResponse;
 	}
 
+	
 }
