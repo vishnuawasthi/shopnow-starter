@@ -21,6 +21,7 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
+import org.springframework.web.servlet.view.ResourceBundleViewResolver;
 
 import com.shopnow.filter.RequestInterceptor;
 import com.shopnow.security.configuration.SecurityConfiguration;
@@ -84,7 +85,15 @@ public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
 		configurer.enable();
 	}
-
+	
+	@Bean
+	public ResourceBundleViewResolver getResourceBundleViewResolver() {
+		ResourceBundleViewResolver viewResolver = new ResourceBundleViewResolver();
+		viewResolver.setBasename("views");
+		viewResolver.setOrder(1);
+		return viewResolver;
+	}
+	
 	@Bean
 	public InternalResourceViewResolver jspViewResolver() {
 		InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
@@ -92,18 +101,21 @@ public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 													viewResolver.setSuffix(".jsp");
 													viewResolver.setViewClass(JstlView.class);
 													viewResolver.setContentType("text/html");
+													viewResolver.setOrder(2);
 													return viewResolver;
 	}
 
 	@Bean(name = "multipartResolver")
 	public CommonsMultipartResolver getMultipartResolver() {
-		return new CommonsMultipartResolver();
+		CommonsMultipartResolver viewResolver= new CommonsMultipartResolver();
+		return viewResolver;
 	}
 
 	@Bean(name = "messageSource")
 	public ReloadableResourceBundleMessageSource getMessageSource() {
 		ReloadableResourceBundleMessageSource resource = new ReloadableResourceBundleMessageSource();
-														 resource.setBasename("classpath:messages");
+														// resource.setBasename("classpath:messages");
+														 resource.setBasenames("classpath:messages");
 														 resource.setDefaultEncoding("UTF-8");
 														 return resource;
 	}
@@ -123,5 +135,5 @@ public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 													converters.add(new MappingJackson2HttpMessageConverter());
 													return converters;
 	}
-
+	
 }
