@@ -181,14 +181,35 @@
   <artifactId>spring-rabbit</artifactId>
   <version>1.5.1.RELEASE</version>
 </dependency>
-		
-		
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.6</version>
 		</dependency>
+		<!-- LOMBOK  -->
+		<!-- Will be picked by javac -->
+		<!-- <dependency> 
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>0.8.5</version>
+        <scope>provided</scope>
+    </dependency> -->
+    
+    <!-- ITEXT -->
+		<dependency>
+	<groupId>com.itextpdf</groupId>
+	<artifactId>itextpdf</artifactId>
+	<version>5.0.6</version>
+</dependency>
+		
 	</dependencies>
+	<repositories>
+	<!-- project lombok is not yet in public maven repo -->
+	<repository> 
+            <id>projectlombok.org</id>
+            <url>http://projectlombok.org/mavenrepo</url>
+        </repository>
+	</repositories>
 	<!-- Plugins -->
 	<build>
 	<pluginManagement>
