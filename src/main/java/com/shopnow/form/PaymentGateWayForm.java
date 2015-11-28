@@ -2,52 +2,134 @@ package com.shopnow.form;
 
 import java.io.Serializable;
 
-public class PaymentGateWayForm  implements Serializable {
+public class PaymentGateWayForm implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private String username;
+
+	// Action url to hit Payment gateway
+	private String actionURL;
+
+	private String cmd;
+
+	// Business Email Id
+	private String business;
+
+	// Business Password
 	private String password;
+	private String custom;
+	private String itemName;
+	private Float amount;
+	private String returnURL;
+	private String cancelURL;
 	
-	private String paymentGateWayURL;
-	private String success;
-	private String failure;
-	public PaymentGateWayForm() {
-		super();
-		// TODO Auto-generated constructor stub
+	
+	private String apiSignature;
+
+
+	public String getActionURL() {
+		return this.actionURL;
 	}
-	public String getUsername() {
-		return this.username;
+
+
+	public void setActionURL(String actionURL) {
+		this.actionURL = actionURL;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+
+	public String getCmd() {
+		return this.cmd;
 	}
+
+
+	public void setCmd(String cmd) {
+		this.cmd = cmd;
+	}
+
+
+	public String getBusiness() {
+		return this.business;
+	}
+
+
+	public void setBusiness(String business) {
+		this.business = business;
+	}
+
+
 	public String getPassword() {
 		return this.password;
 	}
+
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getPaymentGateWayURL() {
-		return this.paymentGateWayURL;
+
+
+	public String getCustom() {
+		return this.custom;
 	}
-	public void setPaymentGateWayURL(String paymentGateWayURL) {
-		this.paymentGateWayURL = paymentGateWayURL;
+
+
+	public void setCustom(String custom) {
+		this.custom = custom;
 	}
-	public String getSuccess() {
-		return this.success;
+
+
+	public String getItemName() {
+		return this.itemName;
 	}
-	public void setSuccess(String success) {
-		this.success = success;
+
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
-	public String getFailure() {
-		return this.failure;
+
+
+	public Float getAmount() {
+		return this.amount;
 	}
-	public void setFailure(String failure) {
-		this.failure = failure;
+
+
+	public void setAmount(Float amount) {
+		this.amount = amount;
+	}
+
+
+	public String getReturnURL() {
+		return this.returnURL;
+	}
+
+
+	public void setReturnURL(String returnURL) {
+		this.returnURL = returnURL;
+	}
+
+
+	public String getCancelURL() {
+		return this.cancelURL;
+	}
+
+
+	public void setCancelURL(String cancelURL) {
+		this.cancelURL = cancelURL;
+	}
+
+
+	public String getApiSignature() {
+		return this.apiSignature;
+	}
+
+
+	public void setApiSignature(String apiSignature) {
+		this.apiSignature = apiSignature;
 	}
 	
+	
+	
+	
+
 }

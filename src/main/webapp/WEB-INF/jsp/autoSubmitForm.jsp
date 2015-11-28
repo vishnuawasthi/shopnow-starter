@@ -9,8 +9,22 @@
 <body onload="submitForm()">
 	<center>
 		<img alt="" src="resources/images/InternetSlowdown_Day.gif">
-		<form action="${paymentGateWayForm.paymentGateWayURL}" method="GET"
-			id="paymentGateWayForm"></form>
+		
+		<form id="paymentGateWayForm" name="paymentGateWayForm"
+			action="${paymentGateWayForm.actionURL }" method="POST">
+			<input type="hidden" name="cmd" value="${paymentGateWayForm.cmd }" />
+			<input type="hidden" name="business" value="${paymentGateWayForm.business }" /> 
+				
+				<input type="hidden"	name="password" value="${paymentGateWayForm.password }" /> 
+				<input	type="hidden" name="custom" value="${paymentGateWayForm.custom }" />
+			<input type="hidden" name="item_name" value="${paymentGateWayForm.itemName }" />
+			 <input type="hidden"	name="amount" value="${paymentGateWayForm.amount}" /> 
+			 <input type="hidden" name="rm" value="5" /> 
+			 <input type="hidden" name="return" value="${paymentGateWayForm.returnURL }" />
+		 <input type="hidden"  name="cancel_return" value="${paymentGateWayForm.cancelURL }" />
+		  <input type="hidden" name="cert_id" value="API Singature" />
+				<!-- <input type="Submit value=" Pay with Paypal"/> -->
+		</form>
 	</center>
 </body>
 <script type="text/javascript">
