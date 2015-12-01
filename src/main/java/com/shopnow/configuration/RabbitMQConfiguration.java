@@ -1,4 +1,4 @@
-package com.shopnow.configuration;
+/*package com.shopnow.configuration;
 
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.rabbit.connection.CachingConnectionFactory;
@@ -9,27 +9,34 @@ import org.springframework.amqp.rabbit.listener.adapter.MessageListenerAdapter;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 
 import com.shopnow.rabbitmq.Receiver;
 
+@Configuration
 public class RabbitMQConfiguration {
 
-	/*private final static String queueName = "shopnow.queue";
 
 	@Bean
 	public ConnectionFactory connectionFactory() {
-		CachingConnectionFactory connectionFactory = new CachingConnectionFactory("localhost",15672);
+		System.out.println("onnectionFactory() -start ");
+		CachingConnectionFactory connectionFactory = new CachingConnectionFactory("localhost",5672);
 														connectionFactory.setUsername("guest");
 														connectionFactory.setPassword("guest");
 														//connectionFactory.setConnectionTimeout(20000);
+		System.out.println("onnectionFactory() -end ");
 														return connectionFactory;
+													
 		}
 
 	@Bean
 	@Primary
 	public AmqpAdmin getRabbitAdmin(ConnectionFactory connectionFactory) {
-		return new RabbitAdmin(connectionFactory);
+		RabbitAdmin rabbitAdmin = new RabbitAdmin(connectionFactory);
+		
+		
+		return rabbitAdmin;
 	}
 
 	@Bean
@@ -43,5 +50,6 @@ public class RabbitMQConfiguration {
 	@Primary
 	public MessageConverter jackson2JsonMessageConverter() {
 		return new Jackson2JsonMessageConverter();
-	}*/
+	}
 }
+*/
