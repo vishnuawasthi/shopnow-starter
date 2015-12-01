@@ -37,7 +37,8 @@ import com.shopnow.security.configuration.SecurityConfiguration;
 					})
 @PropertySource(
 		value = {		"classpath:database.properties",
-						"classpath:web.properties"
+						"classpath:web.properties",
+						"classpath:payment-gateway.properties"
 				}
 		)
 
