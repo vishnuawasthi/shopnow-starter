@@ -1,0 +1,15 @@
+<body>
+		
+		<table border="0" align="center">
+		<tr><td> ${personDTO.firstName}     </td> <td>${personDTO.lastName}  </td>  <td>  <img src="${personDTO.imageURL} " > </img> </td>    </tr>
+		<tr><td> ${personDTO.mobile}     </td> <td>${personDTO.email}  </td>  <td> </td>    </tr>
+		<tr><td> ${personDTO.addressLine1}     </td> <td> </td>  <td>  </td>    </tr>
+		
+		<tr><td> ${personDTO.addressLine2}     </td> <td>  </td>  <td> </td>    </tr>
+		
+		<tr><td>     </td> <td>  </td>  <td> </td>    </tr>
+		
+		</table>
+	</body>
+ 
+</html>

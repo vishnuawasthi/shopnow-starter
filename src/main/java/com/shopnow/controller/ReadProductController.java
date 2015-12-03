@@ -25,6 +25,9 @@ public class ReadProductController {
 	public ModelAndView autocomplete(@RequestParam (value="countryName" ,required=false) String countryName) {
 		System.out.println("countryName:::::::::::::   "+countryName);
 		
+		
+	
+		
 		return new ModelAndView("autocomplete");
 	}
 	

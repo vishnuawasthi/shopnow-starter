@@ -2,6 +2,7 @@ package com.shopnow.configuration;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,6 +14,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -22,6 +24,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.ResourceBundleViewResolver;
+import org.springframework.web.servlet.view.velocity.VelocityConfigurer;
+import org.springframework.web.servlet.view.velocity.VelocityLayoutViewResolver;
 
 import com.shopnow.filter.RequestInterceptor;
 import com.shopnow.security.configuration.SecurityConfiguration;
@@ -136,6 +140,40 @@ public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 		List<HttpMessageConverter<?>> converters =  new ArrayList<HttpMessageConverter<?>>();
 													converters.add(new MappingJackson2HttpMessageConverter());
 													return converters;
+	}
+	
+	// Velocity Support
+	@Bean
+	public VelocityLayoutViewResolver velocityViewResolver() {
+		VelocityLayoutViewResolver viewResolver = new VelocityLayoutViewResolver();
+		viewResolver.setPrefix("/WEB-INF/views/velocity/");
+		// URL Key Default is layout
+		viewResolver.setLayoutUrl("/WEB-INF/views/layout/layout.vm");
+		viewResolver.setSuffix(".vm");
+		viewResolver.setOrder(3);
+		return viewResolver;
+	}
+
+	// This bean is need in order to get the response of velocity template on
+	// browser
+	@Bean
+	public VelocityConfigurer velocityConfig() {
+		VelocityConfigurer velocityConfig = new VelocityConfigurer();
+		velocityConfig.setResourceLoaderPath("/");
+		// velocityConfig.setVelocityEngine( velocityEngine());
+		velocityConfig.setPreferFileSystemAccess(true);
+		return velocityConfig;
+	}
+
+	@Bean
+	public VelocityEngineFactoryBean velocityEngineFactoryBean() {
+		VelocityEngineFactoryBean velocityEngine = new VelocityEngineFactoryBean();
+		Properties velocityProperties = new Properties();
+		velocityProperties.setProperty("resource.loader", "class");
+		velocityProperties.setProperty("class.resource.loader.class",
+				"org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader");
+		velocityEngine.setVelocityProperties(velocityProperties);
+		return velocityEngine;
 	}
 	
 }

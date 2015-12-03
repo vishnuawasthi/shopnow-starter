@@ -1,13 +1,11 @@
 package com.shopnow.assembler;
 
-import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
-
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
-
+import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import com.shopnow.form.Products;
 import com.shopnow.resource.ProductResource;

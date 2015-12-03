@@ -1,0 +1,10 @@
+<center>
+<h1> Layout  - header </h1>
+${name}
+${message}
+
+$screen_content
+
+<h1> Layout  - footer </h1>
+
+</center>

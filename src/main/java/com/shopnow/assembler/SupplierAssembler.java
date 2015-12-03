@@ -1,13 +1,14 @@
 package com.shopnow.assembler;
 
-import org.springframework.hateoas.mvc.ResourceAssemblerSupport;	
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
+import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Service;
 
 import com.shopnow.entity.Supplier;
 import com.shopnow.resource.SupplierResource;
 import com.shopnow.rest.controller.SupplierController;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 
 @Service
 public class SupplierAssembler extends ResourceAssemblerSupport<Supplier, SupplierResource> {
