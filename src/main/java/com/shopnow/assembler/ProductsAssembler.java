@@ -1,8 +1,5 @@
 package com.shopnow.assembler;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
-
 import org.springframework.hateoas.mvc.ResourceAssemblerSupport;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -10,6 +7,8 @@ import org.springframework.util.StringUtils;
 import com.shopnow.form.Products;
 import com.shopnow.resource.ProductResource;
 import com.shopnow.rest.controller.ProductController;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
 
 @Service
 public class ProductsAssembler extends ResourceAssemblerSupport<Products,ProductResource> {

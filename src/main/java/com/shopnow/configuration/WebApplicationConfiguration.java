@@ -36,6 +36,7 @@ import com.shopnow.security.configuration.SecurityConfiguration;
 					SecurityConfiguration.class,
 					JPAConfiguration.class,
 					EmailConfiguration.class,
+					HibernateConfiguration.class
 					/*RabbitMQConfiguration.class,
 					RabbitMQIntegrationConfiguration.class*/
 					})
