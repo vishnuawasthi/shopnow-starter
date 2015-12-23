@@ -26,6 +26,14 @@
 
 
 	<h1>Local - Footer</h1>
+	
+	<hr>
+	Romte host :${remoteHost }
+	Remote Address : ${remotaddress }
+	
+	
+	
+	
 	<script>
 		function initialize() {
 			var mapCanvas = document.getElementById('map');
