@@ -1,5 +1,7 @@
 package com.shopnow.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,4 +35,23 @@ public class HibernateFilterExampleController {
 		System.out.println("jspTagExample() -end");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/ipaddress", method = RequestMethod.GET)
+	public ModelAndView readIPAddress(HttpServletRequest request,HttpServletRequest response) {
+		System.out.println("readIPAddress() -start");
+		
+		System.out.println("Remote host    : "+request.getRemoteHost());
+		System.out.println("Remote Address :"+request.getRemoteAddr());
+		
+		
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("jspTagExample");
+		modelAndView.addObject("remoteHost", request.getRemoteHost());
+		modelAndView.addObject("remotaddress",request.getRemoteAddr());
+		System.out.println("readIPAddress() -end");
+		return modelAndView;
+	}
+	
+	
+	
 }
