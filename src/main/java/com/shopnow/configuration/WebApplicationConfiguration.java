@@ -115,6 +115,8 @@ public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 	@Bean(name = "multipartResolver")
 	public CommonsMultipartResolver getMultipartResolver() {
 		CommonsMultipartResolver viewResolver= new CommonsMultipartResolver();
+		viewResolver.setMaxUploadSize(90000000);
+		
 		return viewResolver;
 	}
 
