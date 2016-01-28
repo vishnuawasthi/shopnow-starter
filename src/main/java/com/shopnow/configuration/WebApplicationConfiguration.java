@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
+import javax.xml.bind.Marshaller;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +16,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.http.converter.xml.MarshallingHttpMessageConverter;
 import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -142,6 +145,15 @@ public class WebApplicationConfiguration extends WebMvcConfigurerAdapter {
 	private List<HttpMessageConverter<?>> getMessageConverters() {
 		List<HttpMessageConverter<?>> converters =  new ArrayList<HttpMessageConverter<?>>();
 													converters.add(new MappingJackson2HttpMessageConverter());
+													
+	     MarshallingHttpMessageConverter xmlConverter = new 		MarshallingHttpMessageConverter();	
+	     
+	     
+	     //org.springframework.oxm.jaxb.Jaxb2Marshaller.Jaxb2Marshaller Jaxb2Marshaller = new org.springframework.oxm.jaxb.Jaxb2Marshaller.Jaxb2Marshaller();
+													
+	     
+	     
+	     
 													return converters;
 	}
 	
