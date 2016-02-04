@@ -29,7 +29,6 @@ public class LoginRestController {
 			return new ResponseEntity<LoginResponseDTO>(loginResponseDTO,HttpStatus.OK);
 		}
 		return new ResponseEntity<LoginResponseDTO>(HttpStatus.BAD_REQUEST);
-		
 	}
 	
 	

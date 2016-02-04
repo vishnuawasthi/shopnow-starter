@@ -9,6 +9,8 @@ import javax.persistence.TypedQuery;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import com.shopnow.entity.User;
@@ -20,6 +22,7 @@ import com.shopnow.repository.AbstractRepository;
  */
 @Component
 @Repository(value="loginRepository")
+@Transactional(propagation=Propagation.MANDATORY)
 public class LoginRepository extends AbstractRepository<User> {
 	@PersistenceContext
 	private EntityManager entityManager;
